@@ -13,9 +13,14 @@ int main(){
     str= to_string(num);
 
     for(int i=0; i<str.length(); i++){
-        sum= sum+pow(int(str[i]),3);
+        sum= sum+pow(str[i] - '0', 3);
+        
     }
-
-    if 
+    if (sum == num){
+        cout << "This is an Angstrom number" << endl;
+    }
+    else{
+        cout << "This is not an Angstrom number" << endl;
+    }
 
 }

@@ -1,5 +1,6 @@
 #include <iostream>
 #include <iomanip>
+#include <cstdio>
 
 using namespace std;
 
@@ -21,9 +22,26 @@ int main(){
     cout << "Enter an Integer: ";
     cin >> num;
 
+    // First way
     cout << "Number in decimal: " << num << "\n";
     cout << "Number in octal:: " << oct << num << "\n";
     cout << "Number in hexadecimal: " << hex << num << "\n";
+
+
+
+    // Second Way
+    char buffer[20];
+
+    sprintf(buffer, "%d", num);
+    cout << "Number in decimal: " << buffer << "\n";
+
+    sprintf(buffer, "%o", num);
+    cout << "Number in octal: " << buffer << "\n";
+
+    sprintf(buffer, "%x", num);
+    cout << "Number in hexadecimal: " << buffer << "\n";
+
+
 
     cout << "Enter a real number: ";
     cin >> fnum;
@@ -34,22 +52,6 @@ int main(){
     cin >> ch;
     cout << ch << endl;
     cout << int(ch)<< endl;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
