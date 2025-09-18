@@ -28,7 +28,8 @@ void exchange(int& a, int& b) {
 /* Sort function with Pass by reference
 **
 */
-
+//taking vector with elements of type int, finding index of largest value, then swapping with last element to sort
+//this is pass by reference
 void sort(vector<int>& T) {
 
 	//YOUR CODE

@@ -31,6 +31,8 @@ void exchange(int& a, int& b) {
 /* Sort function with Pass by value
 **
 */
+//taking vector with elements of type int, finding index of largest value, then swapping with last element to sort
+//this is pass by value
 vector<int> sort(vector<int> T) {
 	//YOUR CODE
 	//search index gets index of max value

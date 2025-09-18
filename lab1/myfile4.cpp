@@ -4,6 +4,8 @@
 
 using namespace std;
 
+//take input of num --> convert to string --> iterate over string for each index to calculate ^3 of each value and sum all of them
+// if it is = to original value then outputs "this is an Angstrom" else "this is not an angstrom number"
 int main(){
     int sum=0;
     int num;

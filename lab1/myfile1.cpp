@@ -12,6 +12,7 @@ int main(){
 
 
 
+    // print size of primitive types
     cout << "Size in bytes of a character: " << sizeof(char) << "\n";
     cout << "Size in bytes of a Integer: " << sizeof(int)<< "\n";
     cout << "Size in bytes of a float: " << sizeof(float)<< "\n";
@@ -22,14 +23,14 @@ int main(){
     cout << "Enter an Integer: ";
     cin >> num;
 
-    // First way
+    // First way of showing decimal, hexa and octal via manipulators
     cout << "Number in decimal: " << num << "\n";
     cout << "Number in octal:: " << oct << num << "\n";
     cout << "Number in hexadecimal: " << hex << num << "\n";
 
 
 
-    // Second Way
+    // Second Way of showing decimal, hexa and octal via buffer
     char buffer[20];
 
     sprintf(buffer, "%d", num);
@@ -43,11 +44,13 @@ int main(){
 
 
 
+    // take real number as input and iving in scientific notation
     cout << "Enter a real number: ";
     cin >> fnum;
     cout << fnum <<endl;
     cout << hexfloat << fnum <<endl;
 
+    // taking character as input and outputting askii value
     cout << "Enter a character: ";
     cin >> ch;
     cout << ch << endl;
