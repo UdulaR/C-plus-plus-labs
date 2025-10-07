@@ -8,7 +8,7 @@ int** triangleInf(int n)
 {
 	int** triangle = new int*[n]; //create triangle pointer which points to array (size n - each element type = int*)
 
-	for(int i=0; i<n;i++){
+	for(int i=0; i<n;i++){ //i is array j is index of array
 		triangle[i] = new int[i+1]; //for every pointer element in triangle create array of 1 more element than i
 		//this is what allows to gradually increase the numbers outputted and create right angle shape of trianlge
 		for(int j=0; j<=i;j++){
