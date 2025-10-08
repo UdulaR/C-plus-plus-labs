@@ -6,4 +6,4 @@ Student Name:Valentino Vinod
 Student Number: 300354449
 Course Code: CSI2372A
 
-Description: Lab 1
+Description: Lab 2
