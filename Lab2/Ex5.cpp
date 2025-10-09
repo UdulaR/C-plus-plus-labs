@@ -68,6 +68,7 @@ void display(char* tab[], int const& nbre)
 {
 	
 	for ( int i = 0 ; i < nbre ; i++ ){
+		cout << "The string " << i << " is: ";
 		cout << tab[i];
 		cout << "\n";
 	}
@@ -92,11 +93,11 @@ void replace(char* tab[], int const& nbre, int const& size)
 	cin >> numero;
 	cin.ignore(INT_MAX,'\n');
 
-	delete tab[numero-1];
-	tab[numero-1]=new char[size_ch];		// memory allocation
+	delete tab[numero];
+	tab[numero]=new char[size_ch];		// memory allocation
 	cout << endl << "Enter the new string: ";
 	
-	cin.getline(tab[numero-1],size_ch,'\t');	//seizure of the string
+	cin.getline(tab[numero],size_ch,'\t');	//seizure of the string
 	cin.ignore(INT_MAX,'\n');		// ignore line return
 }
 
