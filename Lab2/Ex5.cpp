@@ -110,9 +110,6 @@ void sort(char* tab[], int const& nbre)
 		char* key = tab[i];
         int j = i - 1;
 
-        /* Move elements of arr[0..i-1], that are
-           greater than key, to one position ahead
-           of their current position */
 		int cmp = strcmp(tab[j], key);
         while (j >= 0 && strcmp(tab[j], key) > 0) {
 			tab[j+1] = tab[j];
