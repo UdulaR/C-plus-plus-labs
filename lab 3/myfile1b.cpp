@@ -17,7 +17,15 @@ typedef Card Hand[5];
 /* testPair() function*/
 bool testPair(const Hand& h)
 {
-	//YOUR CODE  
+	for(int i=0; i<5;i++){
+		for(int j=i+1; j<5;j++){
+			if(h[i].face==h[j].face){
+				return true;
+			}
+		}
+	}
+	return false;
+	 
 }
 
 
