@@ -17,14 +17,14 @@ typedef Card Hand[5];
 /* testPair() function*/
 bool testPair(const Hand& h)
 {
-	for(int i=0; i<5;i++){
-		for(int j=i+1; j<5;j++){
-			if(h[i].face==h[j].face){
+	for(int i=0; i<5;i++){ //nested for loop to check 2 cards
+		for(int j=i+1; j<5;j++){ 
+			if(h[i].face==h[j].face){ //if face is same return true --> else compare every card
 				return true;
 			}
 		}
 	}
-	return false;
+	return false; //if no pair return false
 	 
 }
 
