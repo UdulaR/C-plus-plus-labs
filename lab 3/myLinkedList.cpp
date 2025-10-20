@@ -1,6 +1,7 @@
 /*Ex2 - a3 CSI2372A*/
 
 #include "myLinkedList.h"
+#include <cstring>
 
 int main()
 {
@@ -72,13 +73,32 @@ Evaluation* remove(Evaluation* p, int& number)
 	cout<<"Student to be removed: ";
 	cin>>nom;
 
-	while(p != nullptr){
-		if()
+	Evaluation *current = p->next;
+	Evaluation *prior = p;
+
+	if(strcmp(prior->student,nom) == 0){
+		p=prior->next;
+		delete prior;
+		--number;
+		return p;
 	}
 
+	while(current != nullptr){
+		if(strcmp(current->student, nom)){
+			Evaluation* temp = current;
+			current=current->next;
+			prior=prior->next->next;
+			delete temp;
+			--number;
+			return p;
+		}
+	}
+	cout<<"Student not found";
+	return p;
 
-	
-	--number;
+
+
+
 }
 
 
