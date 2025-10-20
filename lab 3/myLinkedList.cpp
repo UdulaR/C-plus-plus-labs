@@ -46,7 +46,8 @@ Evaluation* add(Evaluation* p, int& number)
 {
 	Evaluation* node = new Evaluation;
 	cout << "Student Name: ";
-	cin >> (*node).student;
+	cin.getline((*node).student, capacity, '\t');	//seizure of the string
+	cin.ignore(INT_MAX,'\n');		// ignore line return
 	cout << "Grade: ";
 	cin >> (*node).grade;
 
@@ -113,7 +114,8 @@ void display(Evaluation* p)
 	}
 
 	while(p != nullptr){
-		cout<<"Student: "<<(*p).student<<" Grade: "<<(*p).grade<<endl;
+		cout<<"Student: "<<(*p).student<<endl;
+		cout<<"The grade is: "<<(*p).grade<<endl;
 		p=p->next;
 	}
 }
