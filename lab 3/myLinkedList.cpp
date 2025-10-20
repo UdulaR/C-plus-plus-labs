@@ -44,6 +44,16 @@ int main()
 **/
 Evaluation* add(Evaluation* p, int& number)
 {
+	Evaluation* temp = p;
+	int index;
+	cout << "After which element you want to insert ? (0 for start): ";
+	cin >> index;
+	for (int i = 0; i < index-1; i++){
+		if (temp != nullptr || temp->next != nullptr){
+			temp = temp->next;
+		}
+	}
+
 	Evaluation* node = new Evaluation;
 	cout << "Student Name: ";
 	cin.ignore(INT_MAX,'\n');		// ignore line return
@@ -52,9 +62,14 @@ Evaluation* add(Evaluation* p, int& number)
 	cout << "Grade: ";
 	cin >> node->grade;
 
-	(*node).next=p;
-	p=node;
-
+	if (p == nullptr){
+		node->next = p;
+		p = node;
+	}else {
+		node->next = temp->next;
+		temp->next = node;
+	}
+	
 	++number;
 	return p;
 
@@ -119,6 +134,7 @@ void display(Evaluation* p)
 	while(p != nullptr){
 		cout<<"Student: "<<p->student<<endl;
 		cout<<"The grade is: "<<p->grade<<endl;
+		cout<<endl;
 		p=p->next;
 	}
 }
