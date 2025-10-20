@@ -65,6 +65,9 @@ Evaluation* add(Evaluation* p, int& number)
 	if (p == nullptr){
 		node->next = p;
 		p = node;
+	}else if(index == 0){
+		node->next = p;
+		p = node;
 	}else {
 		node->next = temp->next;
 		temp->next = node;
@@ -86,31 +89,29 @@ Evaluation* remove(Evaluation* p, int& number)
 		cout<<"There are no nodes";
 	}
 
-	char nom[capacity];
-	cout<<"Student to be removed: ";
-	cin>>nom;
-
-	Evaluation *current = p->next;
-	Evaluation *prior = p;
-
-	if(strcmp(prior->student,nom) == 0){
-		p=prior->next;
-		delete prior;
-		--number;
-		return p;
-	}
-
-	while(current != nullptr){
-		if(strcmp(current->student, nom)){
-			Evaluation* temp = current;
-			current=current->next;
-			prior=prior->next->next;
-			delete temp;
-			--number;
-			return p;
+	Evaluation* prev = p;
+	int index;
+	cout << "Which element do you want to remove ? (1 for start): ";
+	cin >> index;
+	for (int i = 1; i < index-1; i++){
+		if (prev != nullptr || prev->next != nullptr){
+			prev = prev->next;
 		}
 	}
-	cout<<"Student not found";
+
+	Evaluation *current = prev->next;
+	if (p->next == nullptr){
+		delete p;
+		return nullptr;
+	}else if(index == 1){
+		prev = p;
+		p = p->next;
+		delete prev;
+	}else{
+		prev->next = prev->next->next;
+		delete current;
+	}
+	
 	return p;
 
 
@@ -128,8 +129,6 @@ void display(Evaluation* p)
 	if(p == nullptr){
 		cout<<"There are no nodes";
 	}
-	if(p->student[0] == '\n')
-		std::cout << "student has a newline";
 	
 	while(p != nullptr){
 		cout<<"Student: "<<p->student<<endl;
