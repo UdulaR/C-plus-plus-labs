@@ -62,13 +62,13 @@ Evaluation* add(Evaluation* p, int& number)
 	cout << "Grade: ";
 	cin >> node->grade;
 
-	if (p == nullptr){
+	if (p == nullptr){ // Case 1: Empty List
 		node->next = p;
 		p = node;
-	}else if(index == 0){
+	}else if(index == 0){ // Case 2: Adding at the head of an existing List
 		node->next = p;
 		p = node;
-	}else {
+	}else { // Case 3: Insertion into or at the end of an existing List
 		node->next = temp->next;
 		temp->next = node;
 	}
@@ -99,15 +99,15 @@ Evaluation* remove(Evaluation* p, int& number)
 		}
 	}
 
-	Evaluation *current = prev->next;
-	if (p->next == nullptr){
+	Evaluation *current = prev->next; // A current and a previous are kept so we can route the pointer before current to the one after.
+	if (p->next == nullptr){ // Case 1: Empty List
 		delete p;
 		return nullptr;
-	}else if(index == 1){
+	}else if(index == 1){ // Case 2: Adding at the head of an existing List
 		prev = p;
 		p = p->next;
 		delete prev;
-	}else{
+	}else{ // Case 3: Insertion into or at the end of an existing List
 		prev->next = prev->next->next;
 		delete current;
 	}
