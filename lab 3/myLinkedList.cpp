@@ -46,10 +46,11 @@ Evaluation* add(Evaluation* p, int& number)
 {
 	Evaluation* node = new Evaluation;
 	cout << "Student Name: ";
-	cin.getline((*node).student, capacity, '\t');	//seizure of the string
+	cin.ignore(INT_MAX,'\n');		// ignore line return
+	cin.getline(node->student, capacity, '\t');	//seizure of the string
 	cin.ignore(INT_MAX,'\n');		// ignore line return
 	cout << "Grade: ";
-	cin >> (*node).grade;
+	cin >> node->grade;
 
 	(*node).next=p;
 	p=node;
@@ -112,10 +113,12 @@ void display(Evaluation* p)
 	if(p == nullptr){
 		cout<<"There are no nodes";
 	}
-
+	if(p->student[0] == '\n')
+		std::cout << "student has a newline";
+	
 	while(p != nullptr){
-		cout<<"Student: "<<(*p).student<<endl;
-		cout<<"The grade is: "<<(*p).grade<<endl;
+		cout<<"Student: "<<p->student<<endl;
+		cout<<"The grade is: "<<p->grade<<endl;
 		p=p->next;
 	}
 }
