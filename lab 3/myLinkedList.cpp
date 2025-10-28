@@ -44,15 +44,35 @@ int main()
 **/
 Evaluation* add(Evaluation* p, int& number)
 {
+	Evaluation* temp = p;
+	int index;
+	cout << "After which element you want to insert ? (0 for start): ";
+	cin >> index;
+	for (int i = 0; i < index-1; i++){
+		if (temp != nullptr || temp->next != nullptr){
+			temp = temp->next;
+		}
+	}
+
 	Evaluation* node = new Evaluation;
 	cout << "Student Name: ";
-	cin >> (*node).student;
+	cin.ignore(INT_MAX,'\n');		// ignore line return
+	cin.getline(node->student, capacity, '\t');	//seizure of the string
+	cin.ignore(INT_MAX,'\n');		// ignore line return
 	cout << "Grade: ";
-	cin >> (*node).grade;
+	cin >> node->grade;
 
-	(*node).next=p;
-	p=node;
-
+	if (p == nullptr){ // Case 1: Empty List
+		node->next = p;
+		p = node;
+	}else if(index == 0){ // Case 2: Adding at the head of an existing List
+		node->next = p;
+		p = node;
+	}else { // Case 3: Insertion into or at the end of an existing List
+		node->next = temp->next;
+		temp->next = node;
+	}
+	
 	++number;
 	return p;
 
@@ -69,31 +89,29 @@ Evaluation* remove(Evaluation* p, int& number)
 		cout<<"There are no nodes";
 	}
 
-	char nom[capacity];
-	cout<<"Student to be removed: ";
-	cin>>nom;
-
-	Evaluation *current = p->next;
-	Evaluation *prior = p;
-
-	if(strcmp(prior->student,nom) == 0){
-		p=prior->next;
-		delete prior;
-		--number;
-		return p;
-	}
-
-	while(current != nullptr){
-		if(strcmp(current->student, nom)){
-			Evaluation* temp = current;
-			current=current->next;
-			prior=prior->next->next;
-			delete temp;
-			--number;
-			return p;
+	Evaluation* prev = p;
+	int index;
+	cout << "Which element do you want to remove ? (1 for start): ";
+	cin >> index;
+	for (int i = 1; i < index-1; i++){
+		if (prev != nullptr || prev->next != nullptr){
+			prev = prev->next;
 		}
 	}
-	cout<<"Student not found";
+
+	Evaluation *current = prev->next; // A current and a previous are kept so we can route the pointer before current to the one after.
+	if (p->next == nullptr){ // Case 1: Empty List
+		delete p;
+		return nullptr;
+	}else if(index == 1){ // Case 2: Adding at the head of an existing List
+		prev = p;
+		p = p->next;
+		delete prev;
+	}else{ // Case 3: Insertion into or at the end of an existing List
+		prev->next = prev->next->next;
+		delete current;
+	}
+	
 	return p;
 
 
@@ -111,9 +129,11 @@ void display(Evaluation* p)
 	if(p == nullptr){
 		cout<<"There are no nodes";
 	}
-
+	
 	while(p != nullptr){
-		cout<<"Student: "<<(*p).student<<" Grade: "<<(*p).grade<<endl;
+		cout<<"Student: "<<p->student<<endl;
+		cout<<"The grade is: "<<p->grade<<endl;
+		cout<<endl;
 		p=p->next;
 	}
 }
