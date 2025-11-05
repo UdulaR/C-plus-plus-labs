@@ -53,3 +53,16 @@ Card CardsSet::take(){
     return top; //return top card
 
 }
+
+//put method
+void CardsSet::put(Card c){
+    // add c to end of the set
+    set[number] = c;
+    number++;
+}
+
+//lookIn method
+Card CardsSet::lookIn(int no){
+    //If 1 denotes first card we subtract 1 to reach the proper index
+    return set[no-1];
+}
