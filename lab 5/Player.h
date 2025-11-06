@@ -12,32 +12,24 @@ private:
 
 //play method
 int Player::play(){
-    packet.novSet();
-    cout<<packet.numCards();
-    Card c = packet.take();
-    inHand.put(c);
-    cout<<"You get Card: ";
-    c.write();
-    cout<<endl;
+    while (countPoints() > 0){
+        inHand.take();
+    }
+    char choice;
     do{
-        char choice;
+        Card c = packet.take();
+        inHand.put(c);
+        cout<<"You get Card: ";
+        c.write();
+        cout<<endl;
 
         cout<<"Your score is "<<countPoints()<<" points."<<endl;
-        cout<<"Any additional card? ";
-        cin>>choice;
-
-        if (choice == 'n'){
-            break;
-        }else if (choice == 'y'){
-            Card c = packet.take();
-            inHand.put(c);
-            cout<<"You get Card: ";
-            c.write();
-            cout<<endl;
+        if (countPoints() < 21){
+            cout<<"Any additional card? ";
+            cin>>choice;
         }
-
-    }while(countPoints() < 21);
-
+        
+    }while(countPoints() < 21 && choice == 'y');
     return countPoints();
 }
 

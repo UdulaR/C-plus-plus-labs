@@ -17,18 +17,19 @@ private:
 
 //create set of cards
 void CardsSet::novSet(){
-    int number = 0; //counter to access index
+    number = 0; //counter to access index
     for (int col = club; col<=spade;col++){ //for each color
         for(int val = 1; val<=13;val++){ //give value
             set[number] = Card((color)col,val); //put it in set and index cnt --> creating Card object with Color and Value arguments
             number++; //increase counter
+            
         }
     }
-
 }
 
 //shuffle method
 void CardsSet::shuffle(){
+    cout<<number<<endl;
     //sets new seed --> ensures different random number generated each time
     srand(time(0)); 
     for(int i=0; i<number;i++){ //iterate over the number of cards

@@ -24,26 +24,26 @@ Card::Card(color c, int v) {
 
 //write method
 void Card::write(){
-    switch (col){ //use switch to check color --> print that color and break
-        case club: cout <<"club";break;
-        case diamond: cout <<"diamond";break;
-        case heart: cout <<"heart";break;
-        case spade: cout <<"spade";break;
-    }
     //if else conditions to print val
     if (val==1 || val==14){
-        cout << "Ace";
+        cout << "Ace of ";
     }
-    else if( val=11){
-        cout << "Jack";
+    else if( val==11){
+        cout << "Jack of ";
     }
-    else if( val=12){
-        cout << "Queen";
+    else if( val==12){
+        cout << "Queen of ";
     }
-    else if( val=13){
-        cout << "King";
+    else if( val==13){
+        cout << "King of ";
     }
     else{
-        cout<<val;
+        cout<<val<<" of ";
+    }
+    switch (col){ //use switch to check color --> print that color and break
+        case club: cout <<"Clubs";break;
+        case diamond: cout <<"Diamonds";break;
+        case heart: cout <<"Hearts";break;
+        case spade: cout <<"Spades";break;
     }
 }
