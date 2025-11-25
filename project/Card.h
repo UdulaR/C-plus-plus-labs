@@ -36,7 +36,6 @@ class Card{
 };
 
 
-
 string Card::operator() (int row) const {
     //select card color
     char cardColor;
