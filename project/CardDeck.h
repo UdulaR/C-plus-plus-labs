@@ -6,8 +6,8 @@ class CardDeck : public DeckFactory <Card>{
     public:
     //deck created for entire program
         static CardDeck& make_CardDeck(){
-            static CardDeck deck; //calls CardDeck constructor to create cards
-            return deck;
+            static CardDeck cdeck; //calls CardDeck constructor to create cards
+            return cdeck;
         }
 
     private:
