@@ -1,6 +1,8 @@
 #include <random>
 #include <algorithm> //for random_shuffle
 #include <vector>
+#ifndef DECK_FACTORY_H
+#define DECK_FACTORY_H
 
 using namespace std;
 
@@ -41,3 +43,4 @@ template <class C> class DeckFactory{
         }
 };
 
+#endif
