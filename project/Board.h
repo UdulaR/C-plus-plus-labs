@@ -19,6 +19,7 @@ class Board{
         Card* getCard( const int, const int ) const;
         void setCard( const Letter&, const Number&, Card* ) ;
         void allFacesDown ();
+        vector<std::pair<Letter,Number>> getCardPlays();
     private:
         bool expertDisplay = false;
         CardDeck cd = CardDeck::make_CardDeck();
@@ -141,3 +142,10 @@ void Board::setCard( const Letter& l, const Number& n, Card* c ){
         board[l][n] = c;
     }
 }
+
+vector<std::pair<Letter,Number>> Board::getCardPlays(){
+    return cardPlays;
+}
+// Card* Board::currentPlay(){
+
+// }
