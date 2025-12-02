@@ -1,3 +1,4 @@
+using namespace std;
 #include <random>
 #include <algorithm> //for random_shuffle
 #include <vector>
