@@ -56,6 +56,10 @@ class Card{
             
         }
 
+        bool getFaceUp(){
+            return faceUp;
+        }
+
     private:
         FaceAnimal animal;
         FaceBackground background;

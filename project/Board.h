@@ -15,7 +15,8 @@ class Board{
         bool isFaceUp( const Letter&, const Number&) const ;
         bool turnFaceUp( const Letter&, const Number& );
         bool turnFaceDown( const Letter&, const Number& ) ;
-        Card* getCard( const Letter&, const Number& );
+        Card* getCard( const Letter&, const Number& ) const;
+        Card* getCard( const int, const int ) const;
         void setCard( const Letter&, const Number&, Card* ) ;
         void allFacesDown ();
     private:
@@ -45,7 +46,14 @@ class Board{
                             if (i==2 && k==2){
                                 os << "    ";
                             } else{
-                                os<<"AAA ";
+                                //if card is face up:
+                                if ((b.getCard(i, k)->getFaceUp())){
+                                    os<<(*b.board[i][k])(j)<<" ";
+                                }else{
+                                    os<<"zzz ";
+                                }
+                               
+                                //else:
                                 
                                 //if (b.board[b.cardPlays[i].first][b.cardPlays[i].second]) os<<(*b.board[b.cardPlays[i].first][b.cardPlays[i].second])(k)<<" ";
                             }
@@ -85,4 +93,12 @@ void Board::allFacesDown(){
             }
         }
     }
+}
+
+Card* Board::getCard(const int l, const int n) const{
+    return board[l][n];
+}
+
+Card* Board::getCard(const Letter& l, const Number& n) const{
+    return board[l][n];
 }
