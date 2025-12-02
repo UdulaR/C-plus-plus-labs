@@ -77,6 +77,9 @@ Board::Board(){
             if (i == 2 && j == 2){
                 board[i][j] = nullptr;
             }else{
+                if (cd.isEmpty()){
+                    std::out_of_range ("no more cards!");
+                }
                 board[i][j] = cd.getNext();
             }
         }
@@ -96,9 +99,45 @@ void Board::allFacesDown(){
 }
 
 Card* Board::getCard(const int l, const int n) const{
-    return board[l][n];
+    if (l > 4 || n > 4 || l < 0 || n < 0){
+        throw std::out_of_range ("letter or number out of range");
+    } else {
+        return board[l][n];
+    }
 }
 
 Card* Board::getCard(const Letter& l, const Number& n) const{
-    return board[l][n];
+     if (l > 4 || n > 4 || l < 0 || n < 0){
+        throw std::out_of_range ("letter or number out of range");
+     } else {
+        getCard((int)(l), (int)(n));
+    }
+}
+
+bool Board::isFaceUp( const Letter& l, const Number& n) const{
+    return getCard(l,n)->getFaceUp();
+}
+bool Board::turnFaceUp( const Letter& l, const Number& n ){
+    if (getCard(l,n)->getFaceUp()){
+        return false;
+    } else {
+        getCard(l,n)->setFaceUp(true);
+    }
+    return true;
+}
+bool Board::turnFaceDown( const Letter& l, const Number& n ){
+    if (getCard(l,n)->getFaceUp()){
+        getCard(l,n)->setFaceUp(false);
+    } else {
+        return false;
+    }
+    return true;
+}
+
+void Board::setCard( const Letter& l, const Number& n, Card* c ){
+    if (l > 4 || n > 4 || l < 0 || n < 0){
+        throw std::out_of_range ("letter or number out of range");
+    }else{
+        board[l][n] = c;
+    }
 }

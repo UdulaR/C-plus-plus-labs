@@ -60,6 +60,10 @@ class Card{
             return faceUp;
         }
 
+        void setFaceUp(bool face){
+            faceUp = face;
+        }
+
     private:
         FaceAnimal animal;
         FaceBackground background;
