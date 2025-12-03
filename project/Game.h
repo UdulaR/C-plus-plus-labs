@@ -19,6 +19,10 @@ class Game{
         void setCard( const Letter&, const Number&, Card* ) ; // which calls the corresponding method in Board. 
         bool getMode();
         void setMode(bool);
+        Board& getBoard(); //getBoard --> modifable
+        const Board& getBoard() const; //getboard --> not modifying 
+        void revealThreeForPlayer(Side s);
+
     private:
         int round = 0;
         vector<Player> players;
@@ -36,6 +40,7 @@ class Game{
 };
 
 Game::Game(){
+
 
 }
 
@@ -80,3 +85,51 @@ bool Game::getMode(){
 void Game::setMode(bool m){
     isExpert = m;
 }
+
+//getting Board methods
+Board& Game::getBoard(){
+    return b;
+}
+
+const Board& Game::getBoard() const{
+    return b;
+}
+
+
+
+
+
+//method that reveals 3 cards
+void Game::revealThreeForPlayer(Side s){
+    switch(s){
+        case top_side: //A 1-3
+            b.turnFaceUp((Letter)0, (Number)1);
+            b.turnFaceUp((Letter)0, (Number)2);
+            b.turnFaceUp((Letter)0, (Number)3);
+            break;
+
+        case bottom_side: //E 1-3
+            b.turnFaceUp((Letter)4, (Number)1);
+            b.turnFaceUp((Letter)4, (Number)2);
+            b.turnFaceUp((Letter)4, (Number)3);
+            break;
+
+        case left_side://1 B-D
+            b.turnFaceUp((Letter)1, (Number)0);
+            b.turnFaceUp((Letter)2, (Number)0);
+            b.turnFaceUp((Letter)3, (Number)0);
+            break;
+
+        case right_side: //5 B-D
+            b.turnFaceUp((Letter)1, (Number)4);
+            b.turnFaceUp((Letter)2, (Number)4);
+            b.turnFaceUp((Letter)3, (Number)4);
+            break;
+
+        
+
+    }
+}
+
+
+

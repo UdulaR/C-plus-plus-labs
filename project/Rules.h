@@ -40,6 +40,16 @@ bool Rules::roundOver(const Game& g) {
     }
     return numActive == 1;
 }
-const Player& Rules::getNextPlayer(const Game& ){//**
+const Player& Rules::getNextPlayer(const Game& g){//**
+    for(int i=0;i<4;i++){
+        const Player& p = g.getPlayer((Side)i);
+        if(p.isActive()){
+            return p;
+        }
+        
+    }
+    throw runtime_error("No active player");
+
+    
 
 }
