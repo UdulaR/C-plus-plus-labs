@@ -63,7 +63,7 @@ int Player::getNRubis() const{
 
 //increments the number of rubis a player has --> pass by reference
 void Player::addRubis(const Rubis& r){
-    rubis = rubis + int(r);
+    rubis += int(r);
 }
 
 //sets the game status --> whether game has ended or not

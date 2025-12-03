@@ -4,6 +4,7 @@ using namespace std;
 #include "Game.h"
 #include "Rules.h"
 #include "RubisDeck.h"
+#include "Player.h"
 
 int main() {
     // Ask player to choose game version, number of players and names of players.
