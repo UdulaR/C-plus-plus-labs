@@ -28,7 +28,7 @@ class Board{
         Card* board[5][5];
         vector<std::pair<Letter,Number>> cardPlays;
         friend ostream& operator<<(ostream& os, const Board& b){
-            if (b.expertDisplay){
+            if (b.expertDisplay){ // EXPERT DISPLAY
                 for (int k = 0; k < 3; k++){
                     for (int i = 0; i < b.cardPlays.size(); i++){
                         os<<(*b.board[b.cardPlays[i].first][b.cardPlays[i].second])(k)<<" ";
@@ -78,7 +78,7 @@ Board::Board(){
     for (int i = 0; i < 5; i++){
         for (int j = 0; j < 5; j++){
             if (i == 2 && j == 2){
-                board[i][j] = nullptr;
+                board[i][j] = nullptr; // If middle spot don't fill
             }else{
                 if (cd.isEmpty()){
                     std::out_of_range ("no more cards!");
@@ -92,7 +92,7 @@ Board::Board(){
 void Board::allFacesDown(){
     for (int i = 0; i < 5; i++){
         for (int j = 0; j < 5; j++){
-            if (i == 2 && j == 2){
+            if (i == 2 && j == 2){ // If middle spot do nothing
                 continue;
             }else{
                 board[i][j]->faceUp = false;
@@ -102,6 +102,7 @@ void Board::allFacesDown(){
 }
 
 Card* Board::getCard(const int l, const int n) const{
+    // Bounds checking
     if (l > 4 || n > 4 || l < 0 || n < 0){
         throw std::out_of_range ("letter or number out of range");
     } else {
@@ -110,6 +111,7 @@ Card* Board::getCard(const int l, const int n) const{
 }
 
 Card* Board::getCard(const Letter& l, const Number& n) const{
+    // Bounds checking
      if (l > 4 || n > 4 || l < 0 || n < 0){
         throw std::out_of_range ("letter or number out of range");
      } else {
@@ -138,6 +140,7 @@ bool Board::turnFaceDown( const Letter& l, const Number& n ){
 }
 
 void Board::setCard( const Letter& l, const Number& n, Card* c ){
+    // Bounds checking
     if (l > 4 || n > 4 || l < 0 || n < 0){
         throw std::out_of_range ("letter or number out of range");
     }else{
@@ -148,8 +151,3 @@ void Board::setCard( const Letter& l, const Number& n, Card* c ){
 vector<std::pair<Letter,Number>> Board::getCardPlays() const{
     return cardPlays;
 }
-
-
-// Card* Board::currentPlay(){
-
-// }

@@ -74,14 +74,14 @@ int main() {
 
             // update board in game
             g.getBoard().turnFaceUp(letter,number);
-            //HOW TO UPDATE BOARD --> USE VECTOR IN GAME ##############################
+            
 
             // if Rules.isValid(card) is false
             if(!r.isValid(g)){
                 // # player is no longer part of the current round
                 // current player becomes inactive
                 cout<<current.getName() <<" out for round";
-                current.setActive(false); //CANT SET CURRENT PLAYER TO FALSE#########################
+                current.setActive(false); 
             }
             // display game
             cout<<g;
@@ -102,10 +102,23 @@ int main() {
 
 
 
-            // print players with their number of rubies sorted from least to
+        // print players with their number of rubies sorted from least to
+        int mostRubis = 0 ;
+        Player& winner;
+        //iterate through all players printing their stats and also finding the winner
+        for(int i=0;i<numPlayers;i++){
+            Player& p = g.getPlayer((Side)i);
+            int rubis = p.getNRubis();
+            cout<<"Player "<<i+1<<": "<<rubis<<endl;
+            if (rubis > mostRubis){
+                mostRubis = rubis;
+                winner = p;
+            }
+        }
             // most rubies
+        cout<<"Most rubis obtained: "<<mostRubis<<endl;
             // Print overall winner
-        
+        cout<<"Winner: "<<winner<<endl;
         
     }
 }
