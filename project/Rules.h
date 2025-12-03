@@ -16,6 +16,10 @@ class Rules{
 
 };
 
+/**
+ * Game& g: take in a game instance
+ * check if the player found a match
+ */
 bool Rules::isValid(const Game& g) {
     if (g.getPreviousCard() == g.getCurrentCard()){
         return true;
@@ -23,6 +27,11 @@ bool Rules::isValid(const Game& g) {
         return false;
     }
 }
+
+/**
+ * Game& g: Take in the game instance
+ * Determines if the game is over by checking if 6 rounds have finished
+ */
 bool Rules::gameOver(const Game& g) {
     if (g.getRound() == 7){
         return true;
@@ -31,6 +40,10 @@ bool Rules::gameOver(const Game& g) {
     }
 }
 
+/**
+ * Game& g: Take in the game instance
+ * Checks if the round is over by checking if there is only 1 active player left.
+ */
 bool Rules::roundOver(const Game& g) {
     int numActive = 0;
     for (int i = 0; i < 4; i++){
@@ -40,6 +53,12 @@ bool Rules::roundOver(const Game& g) {
     }
     return numActive == 1;
 }
+
+/**
+ * Game& g: take in the game instance
+ * Gets the next player who is going to play
+ * returns: The player who will go next
+ */
 const Player& Rules::getNextPlayer(const Game& g){//**
     for(int i=0;i<4;i++){
         const Player& p = g.getPlayer((Side)i);

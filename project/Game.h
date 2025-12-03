@@ -39,18 +39,25 @@ class Game{
         }
 };
 
-Game::Game(){
-
-
-}
-
+/**
+ * returns: the current round the game is on.
+ */
 int Game::getRound() const {
     return round;
 }
+
+/**
+ * Player& p: The player to be added
+ * adds the player to the end of the players vector.
+ */
 void Game::addPlayer( const Player& p ){
     players.push_back(p);
 }
 
+/**
+ * Side s: side to search on
+ * returns: The player sitting at the given side.
+ */
 Player& Game::getPlayer( Side s ) const {
     for (Player p : players) { // Iterate through vector for player on side s
         if (p.getSide() == s){
@@ -59,29 +66,57 @@ Player& Game::getPlayer( Side s ) const {
     }
     throw std::runtime_error ("No player in that spot");
 }
+
+/**
+ * returns: The previous card played
+ */
 const Card* Game::getPreviousCard() const{ // iterator starts at end of recent plays, moves one back, then returns that card
     auto i = b.getCardPlays().rbegin();
     i++;
     return b.getCard(i->first, i->second);
 }
+
+/**
+ * returns: The current card played
+ */
 const Card* Game::getCurrentCard() const{ // Iterator starts at end of recent plays and returns that card
     auto i = b.getCardPlays().rbegin();
     return b.getCard(i->first, i->second);
 }
+
+/**
+ * Card* c: the card to be set.
+ * sets the current card play to c.
+ */
 void Game::setCurrentCard( const Card* c) { // **
-    // b.getCardPlays().push_back(ts);
+    b.getCardPlays().push_back(c);
 }
+
+/**
+ * Calls the getCard function of the Board class with the same params.
+ */
 Card* Game::getCard( const Letter& l, const Number& n ){
     b.getCard(l, n);
 }
+
+/**
+ * Calls the setCard function of the Board class with the same params.
+ */
 void Game::setCard( const Letter& l , const Number& n, Card* c ) {
     b.setCard(l, n, c);
 }
 
+/**
+ * returns: Whether or not this is expert mode as a boolean
+ */
 bool Game::getMode(){
     return isExpert;
 }
 
+/**
+ * bool m: boolean containing whether or not it will be expert mode
+ * sets the mode to m
+ */
 void Game::setMode(bool m){
     isExpert = m;
 }
@@ -100,6 +135,7 @@ const Board& Game::getBoard() const{
 
 
 //method that reveals 3 cards
+// Side s: gives the side of the player who is revealing the cards.
 void Game::revealThreeForPlayer(Side s){
     switch(s){
         case top_side: //A 1-3

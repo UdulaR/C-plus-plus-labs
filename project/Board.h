@@ -74,6 +74,9 @@ class Board{
         
 };
 
+/**
+ * Board constructor--fills 2D array board with cards
+ */
 Board::Board(){
     for (int i = 0; i < 5; i++){
         for (int j = 0; j < 5; j++){
@@ -89,6 +92,9 @@ Board::Board(){
     }
 }
 
+/**
+ * sets all cards on the board face down.
+ */
 void Board::allFacesDown(){
     for (int i = 0; i < 5; i++){
         for (int j = 0; j < 5; j++){
@@ -101,6 +107,11 @@ void Board::allFacesDown(){
     }
 }
 
+/**
+ * int l: letter position
+ * int n: number position
+ * returns: The card at the given coordinates on the board
+ */
 Card* Board::getCard(const int l, const int n) const{
     // Bounds checking
     if (l > 4 || n > 4 || l < 0 || n < 0){
@@ -110,6 +121,12 @@ Card* Board::getCard(const int l, const int n) const{
     }
 }
 
+/**
+ * Letter& l: letter position
+ * Number& n: number position
+ * returns: The card at the given coordinates on the board
+ * Converts to int and uses above function.
+ */
 Card* Board::getCard(const Letter& l, const Number& n) const{
     // Bounds checking
      if (l > 4 || n > 4 || l < 0 || n < 0){
@@ -119,9 +136,20 @@ Card* Board::getCard(const Letter& l, const Number& n) const{
     }
 }
 
+/**
+ * Letter& l: letter position of card
+ * Number& n: number position of card
+ * returns: Whether the card at the position is face up
+ */
 bool Board::isFaceUp( const Letter& l, const Number& n) const{
     return getCard(l,n)->getFaceUp();
 }
+
+/**
+ * Letter& l: letter position of card
+ * Number& n: number position of card
+ * returns: true if the card could be turned face up. False if it was already up.
+ */
 bool Board::turnFaceUp( const Letter& l, const Number& n ){
     if (getCard(l,n)->getFaceUp()){
         return false;
@@ -130,6 +158,12 @@ bool Board::turnFaceUp( const Letter& l, const Number& n ){
     }
     return true;
 }
+
+/**
+ * Letter& l: letter position of card
+ * Number& n: number position of card
+ * returns: true if the card could be turned face down. False if it was already down.
+ */
 bool Board::turnFaceDown( const Letter& l, const Number& n ){
     if (getCard(l,n)->getFaceUp()){
         getCard(l,n)->setFaceUp(false);
@@ -139,6 +173,12 @@ bool Board::turnFaceDown( const Letter& l, const Number& n ){
     return true;
 }
 
+/**
+ * Letter& l: letter position of card
+ * Number& n: number position of card
+ * Card* c: pointer to a card
+ * Sets a card in the given positions to c
+ */
 void Board::setCard( const Letter& l, const Number& n, Card* c ){
     // Bounds checking
     if (l > 4 || n > 4 || l < 0 || n < 0){
@@ -148,6 +188,9 @@ void Board::setCard( const Letter& l, const Number& n, Card* c ){
     }
 }
 
+/**
+ * returns the vector which stores all the card plays in the game.
+ */
 vector<std::pair<Letter,Number>> Board::getCardPlays() const{
     return cardPlays;
 }
